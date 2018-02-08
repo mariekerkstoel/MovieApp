@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import './App.css';
-import List from './components/List'
+import List from './components/List';
 
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {value: '', searchedMovies: []};
+    this.state = {value: '', favorites: [], searchedMovies: []};
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
 
@@ -37,6 +38,13 @@ class App extends Component {
     this.fetchMovieData(url);
   }
 
+  handleClick(event){
+    let favorites = this.state.favorites
+    favorites.push(event)
+    this.setState({favorites: favorites})
+    alert('Added movie to favorites')
+  }
+
   render() {
     let movieArray = [{id: 1, title: 'batman'}]
     return (
@@ -51,7 +59,7 @@ class App extends Component {
         </form>
         </div>
         <div className='movies'>
-        <List searchedMovies= {this.state.searchedMovies} />
+        <List searchedMovies={this.state.searchedMovies} handleClick={this.handleClick} />
         </div>
       </div>
     );
