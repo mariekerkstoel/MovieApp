@@ -39,9 +39,14 @@ class App extends Component {
   }
 
   handleClick(event){
-    let favorites = this.state.favorites
-    favorites.push(event)
-    this.setState({favorites: favorites})
+    // let favorites = this.state.favorites
+    // favorites.push(event)
+    // this.setState({favorites: favorites})
+    fetch('http://localhost:5000/api/favorites', {
+      method: 'post',
+      body: JSON.stringify(event),
+      headers: {'Content-Type':'application/json'}
+    })
     alert('Added movie to favorites')
   }
 
