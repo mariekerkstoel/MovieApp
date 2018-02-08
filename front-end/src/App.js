@@ -11,15 +11,14 @@ class App extends Component {
   }
 
 
-  fetchMovieData(title) {
+  fetchMovieData(url) {
     let self = this
-    fetch(`https://api.themoviedb.org/3/search/movie?api_key=121486b23802e0b6735125ff1892f340&language=en-US&query=${title}&page=1&include_adult=false`)
+    fetch(url)
     .then(function(response){
       return response.json()
     })
     .then(function(jsonData){
       self.setState({searchedMovies: jsonData.results})
-      console.log(self.state)
     })
   }
 
@@ -28,10 +27,15 @@ class App extends Component {
   }
 
   handleSubmit(event){
-    this.fetchMovieData(this.state.value);
+    let url = `https://api.themoviedb.org/3/search/movie?api_key=121486b23802e0b6735125ff1892f340&language=en-US&query=${this.state.value}&page=1&include_adult=false`
+    this.fetchMovieData(url);
     event.preventDefault();
   }
 
+  componentDidMount(){
+    let url = 'https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=121486b23802e0b6735125ff1892f340'
+    this.fetchMovieData(url);
+  }
 
   render() {
     let movieArray = [{id: 1, title: 'batman'}]
