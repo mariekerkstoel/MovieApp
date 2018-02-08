@@ -5,9 +5,9 @@ class Movie extends Component {
     console.log(this.props.movie)
     return(
       <div>
-        <li>
-          {this.props.movie.title}
-        </li>
+          <h1>{this.props.movie.title}</h1>
+          <img src={'https://image.tmdb.org/t/p/w500'+this.props.movie.poster_path} style={{width: '100px'}} />
+          <p>{this.props.movie.overview}</p>
       </div>
     );
   }
