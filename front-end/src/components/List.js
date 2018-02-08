@@ -7,7 +7,7 @@ class List extends Component {
 
       receivedMovies = this.props.searchedMovies.map(movie => {
           return(
-            <Movie key={movie.id} movie={movie}/>
+            <Movie key={movie.id} movie={movie} handleClick={this.props.handleClick}/>
           )
       })
     return(
