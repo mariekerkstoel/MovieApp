@@ -5,7 +5,7 @@ import List from './components/List';
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {value: '', favorites: [], searchedMovies: []};
+    this.state = {value: '', movies: []};
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleClick = this.handleClick.bind(this);
@@ -19,7 +19,7 @@ class App extends Component {
       return response.json()
     })
     .then(function(jsonData){
-      self.setState({searchedMovies: jsonData.results})
+      self.setState({movies: jsonData.results})
     })
   }
 
@@ -39,9 +39,6 @@ class App extends Component {
   }
 
   handleClick(event){
-    // let favorites = this.state.favorites
-    // favorites.push(event)
-    // this.setState({favorites: favorites})
     fetch('http://localhost:5000/api/favorites', {
       method: 'post',
       body: JSON.stringify(event),
@@ -64,7 +61,7 @@ class App extends Component {
         </form>
         </div>
         <div className='movies'>
-        <List searchedMovies={this.state.searchedMovies} handleClick={this.handleClick} />
+        <List movies={this.state.movies} handleClick={this.handleClick} />
         </div>
       </div>
     );

@@ -5,7 +5,7 @@ class List extends Component {
   render(){
     let receivedMovies
 
-      receivedMovies = this.props.searchedMovies.map(movie => {
+      receivedMovies = this.props.movies.map(movie => {
           return(
             <Movie key={movie.id} movie={movie} handleClick={this.props.handleClick}/>
           )
