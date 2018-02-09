@@ -6,6 +6,14 @@ router.get('/', (req, res) =>{
   res.send('Hello, you are on the api route')
 })
 
+router.get('/favorites', (req, res) => {
+  const collection = db.get('favorites')
+
+  collection.find({}).then((docs) => {
+    res.json(docs);
+  })
+})
+
 router.post('/favorites', (req, res) => {
   const collection = db.get('favorites')
 
