@@ -45,8 +45,16 @@ class App extends Component {
       method: 'post',
       body: JSON.stringify(event),
       headers: {'Content-Type':'application/json'}
+    }).then(function(response) {
+      return response.json();
     })
-    alert('Added movie to favorites')
+    .then(function(jsonData){
+      if(jsonData.status === 'Not full'){
+        alert('Added movie to favorites')
+      } else {
+        alert('You already have 5 favorites')
+      }
+    })
   }
 
   render() {
