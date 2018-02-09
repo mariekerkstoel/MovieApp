@@ -30,4 +30,12 @@ router.post('/favorites', (req, res) => {
   });
 })
 
+router.delete('/favorites/:id', (req, res) => {
+  const collection = db.get('favorites')
+
+  collection.remove({id: parseInt(req.params.id)})
+  res.send(200)
+})
+
+
 module.exports = router
