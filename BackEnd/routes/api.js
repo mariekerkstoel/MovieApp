@@ -17,11 +17,17 @@ router.get('/favorites', (req, res) => {
 router.post('/favorites', (req, res) => {
   const collection = db.get('favorites')
 
-  collection.insert(req.body)
-   .then((docs) => {
-   }).catch((err) => {
-   })
-  res.send(200)
+  collection.find({}).then((docs) => {
+    if(docs.length < 5){
+      collection.insert(req.body)
+       .then((docs) => {
+       }).catch((err) => {
+       });
+      res.json({status: "Not full"});
+    } else {
+      res.json({status: "Full"});
+    }
+  });
 })
 
 module.exports = router
