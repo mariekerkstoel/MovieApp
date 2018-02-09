@@ -46,7 +46,7 @@ I want to be able to re-order my ranking list
 ```
 As a Film Enthusiast who can only count up to 5
 So I can understand what is a good film or not,
-I want to change a pre-determined ranking to be out of 5
+I want to change a pre-determined rating to be out of 5
 ```
 
 ```
