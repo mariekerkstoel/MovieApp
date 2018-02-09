@@ -17,7 +17,6 @@ class Favorites extends Component {
     })
     .then(function(jsonData){
       self.setState({favorites: jsonData})
-      console.log(self.state.favorites)
     })
   }
 
