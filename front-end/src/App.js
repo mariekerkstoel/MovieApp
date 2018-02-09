@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
 import List from './components/List';
+import { Link } from 'react-router-dom';
+
 
 class App extends Component {
   constructor(props) {
@@ -51,6 +53,9 @@ class App extends Component {
     let movieArray = [{id: 1, title: 'batman'}]
     return (
       <div>
+        <div>
+          <Link to='/favorites'>Favorites</Link>
+        </div>
         <div>
         <form onSubmit={this.handleSubmit}>
           <label>
