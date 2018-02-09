@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import List from './List';
+import { Link } from 'react-router-dom';
+
 
 class Favorites extends Component {
   constructor(props) {
@@ -21,7 +23,10 @@ class Favorites extends Component {
 
   render(){
     return(
+      <div>
+      <Link to='/'>Home</Link>
       <List movies={this.state.favorites} />
+      </div>
     )
   }
 }
