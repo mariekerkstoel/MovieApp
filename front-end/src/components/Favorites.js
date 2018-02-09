@@ -24,7 +24,7 @@ class Favorites extends Component {
     return(
       <div>
       <Link to='/'>Home</Link>
-      <List movies={this.state.favorites} />
+      <List movies={this.state.favorites} buttonText={'Delete from favorites'} />
       </div>
     )
   }

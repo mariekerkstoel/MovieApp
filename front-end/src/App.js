@@ -74,7 +74,7 @@ class App extends Component {
         </form>
         </div>
         <div className='movies'>
-        <List movies={this.state.movies} handleClick={this.handleClick} />
+        <List movies={this.state.movies} handleClick={this.handleClick} buttonText={'Add to favorites'} />
         </div>
       </div>
     );
