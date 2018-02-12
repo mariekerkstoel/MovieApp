@@ -33,11 +33,19 @@ class Favorites extends Component {
     })
   }
 
+  handleRankUp(event){
+    console.log('button works')
+  }
+
+  handleRankDown(event){
+    console.log('this button works too')
+  }
+
   render(){
     return(
       <div>
       <Link to='/'>Home</Link>
-      <List movies={this.state.favorites} buttonText={'Delete from favorites'} handleClick={this.handleClick} />
+      <List movies={this.state.favorites} buttonText={'Delete from favorites'} handleClick={this.handleClick} handleRankUp={this.handleRankUp} handleRankDown={this.handleRankDown} />
       </div>
     )
   }
