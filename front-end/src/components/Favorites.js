@@ -8,6 +8,8 @@ class Favorites extends Component {
     super(props);
     this.state = {favorites: []};
     this.handleClick = this.handleClick.bind(this);
+    this.handleRankDown = this.handleRankDown.bind(this);
+    this.handleRankUp = this.handleRankUp.bind(this);
   }
 
   componentDidMount(){
@@ -19,6 +21,12 @@ class Favorites extends Component {
     .then(function(jsonData){
       self.setState({favorites: jsonData})
     })
+  }
+
+  swapElementUp(array, indexA, indexB) {
+    var temp = array[indexA];
+    array[indexA] = array[indexB];
+    array[indexB] = temp;
   }
 
   handleClick(event){
@@ -34,11 +42,24 @@ class Favorites extends Component {
   }
 
   handleRankUp(event){
-    console.log('button works')
+    let self = this
+    let favorites = this.state.favorites
+      for(var i = 0; i<favorites.length; i++){
+        if(favorites[i]===event){
+          this.swapElementUp(favorites, i - 1, i)
+          self.setState({favorites: favorites}) 
+        }
+      }
   }
 
   handleRankDown(event){
-    console.log('this button works too')
+    let self = this
+    let favorites = this.state.favorites 
+      for(var i = 0; i<favorites.length; i++){
+        if(favorites[i]===event){
+        console.log("button still works")
+        }
+      }
   }
 
   render(){
