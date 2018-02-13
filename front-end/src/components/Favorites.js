@@ -23,7 +23,7 @@ class Favorites extends Component {
     })
   }
 
-  swapElementUp(array, indexA, indexB) {
+  swapElement(array, indexA, indexB) {
     var temp = array[indexA];
     array[indexA] = array[indexB];
     array[indexB] = temp;
@@ -46,7 +46,7 @@ class Favorites extends Component {
     let favorites = this.state.favorites
       for(var i = 0; i<favorites.length; i++){
         if(favorites[i]===event){
-          this.swapElementUp(favorites, i - 1, i)
+          this.swapElement(favorites, i - 1, i)
           self.setState({favorites: favorites}) 
         }
       }
@@ -55,11 +55,13 @@ class Favorites extends Component {
   handleRankDown(event){
     let self = this
     let favorites = this.state.favorites 
-      for(var i = 0; i<favorites.length; i++){
-        if(favorites[i]===event){
-        console.log("button still works")
-        }
+    for(var i = 0; i<favorites.length; i++){
+      if (favorites[i] === event) {
+        let newFavorites = favorites.slice()
+        this.swapElement(newFavorites, i , (i + 1))
+        self.setState({favorites: newFavorites})
       }
+    }
   }
 
   render(){
